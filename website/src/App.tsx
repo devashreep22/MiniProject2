@@ -1,9 +1,16 @@
-import React from 'react'
+import { RouterProvider } from "react-router-dom";
+import router from "@/router/router";
+import { AuthProvider } from "./context/AuthContext";
+import { CartProvider } from "./context/CardContext";
 
 function App() {
   return (
-    <div className='h-screen w-full bg-black text-white flex items-center justify-center'>App</div>
-  )
+    <AuthProvider>
+      <CartProvider>
+        <RouterProvider router={router} />
+      </CartProvider>
+    </AuthProvider>
+  );
 }
 
-export default App
+export default App;
