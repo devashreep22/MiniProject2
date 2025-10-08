@@ -23,24 +23,67 @@ export default function Home() {
       <main className="flex-1 px-6">
         {/* Hero Section */}
         <section className="relative">
-          <div className="absolute inset-0 bg-black/40 z-10" />
-          <div className="h-[600px] bg-cover bg-center" style={{ backgroundImage: "url('/images/hero.jpg')" }} />
-          <div className="container absolute inset-0 z-20 flex flex-col items-center justify-center text-center text-white">
-            <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
-              Fresh From Our Farms <br /> To Your Table
-            </h1>
-            <p className="mt-6 max-w-lg text-lg">
-              Experience the freshest local produce, artisanal goods, and community spirit at Farmwise.
-            </p>
-            <div className="mt-8 flex flex-wrap justify-center gap-4">
-              <Button size="lg" className="bg-green-600 hover:bg-green-700">
-                Find Our Location
-              </Button>
-              <Link to="/register">
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
-                  Sign Up Now
-                </Button>
-              </Link>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              {/* Left Content */}
+              <div className="space-y-8">
+                <div>
+                  <h1 className="text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
+                    Fresh vegetables
+                    <br />
+                    From <span className="text-green-600">Farm2You</span>
+                  </h1>
+                </div>
+
+                <p className="text-xl text-gray-600">
+                  We deliver farm-fresh vegetable and fruits right to your doorstep.
+                </p>
+
+                <div className="flex flex-wrap gap-4">
+                  <button className="px-8 py-3 bg-green-600 text-white rounded-full font-medium hover:bg-green-700 transition shadow-lg hover:shadow-xl">
+                    Order Now
+                  </button>
+                  <button className="px-8 py-3 bg-white text-green-600 border-2 border-green-600 rounded-full font-medium hover:bg-green-50 transition">
+                    Explore
+                  </button>
+                </div>
+
+                {/* Features */}
+                <div className="grid sm:grid-cols-2 gap-6 pt-8">
+                  <div className="bg-white p-6 rounded-2xl shadow-md hover:shadow-lg transition">
+                    <div className="flex items-center gap-3 mb-2">
+                      <span className="text-2xl">🚚</span>
+                      <h3 className="font-bold text-gray-900">Fast Delivery</h3>
+                    </div>
+                    <p className="text-gray-600">Within 30 minutes</p>
+                  </div>
+
+                  <div className="bg-white p-6 rounded-2xl shadow-md hover:shadow-lg transition">
+                    <div className="flex items-center gap-3 mb-2">
+                      <span className="text-2xl">🌿</span>
+                      <h3 className="font-bold text-gray-900">100% Organic</h3>
+                    </div>
+                    <p className="text-gray-600">Grown naturally</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Right Image */}
+              <div className="relative">
+                <div className="relative rounded-3xl overflow-hidden shadow-2xl">
+                  <img
+                    src="https://images.unsplash.com/photo-1488459716781-31db52582fe9?w=800&h=1000&fit=crop"
+                    alt="Fresh vegetables in wooden crate"
+                    className="w-full h-[600px] object-cover"
+                  />
+                </div>
+
+                {/* Floating AI Chatbot Button */}
+                <button className="absolute bottom-8 right-8 px-6 py-3 bg-green-600 text-white rounded-full font-medium shadow-lg hover:bg-green-700 transition flex items-center gap-2">
+                  <span className="w-2 h-2 bg-white rounded-full animate-pulse"></span>
+                  AI Chatbot
+                </button>
+              </div>
             </div>
           </div>
         </section>
