@@ -1,6 +1,12 @@
 import AuthGuard from "@/components/common/AuthGuard";
+import CartPage from "@/pages/buyer/cart/Cart";
+import CheckoutPage from "@/pages/buyer/checkout/Checkout";
 import AuthPage from "@/pages/Main/AuthPage";
 import HomePage from "@/pages/Main/HomePage";
+import LoginPage from "@/pages/Main/Login";
+import RegisterPage from "@/pages/Main/Register";
+import ProductsPage from "@/pages/Products/Products";
+import ProductPage from "@/pages/Products/ProductsDetail";
 import {
     createBrowserRouter,
     createRoutesFromElements,
@@ -12,6 +18,13 @@ const router = createBrowserRouter(
         <>
             <Route path="/" element={<HomePage />} />
             <Route path="/auth" element={<AuthPage />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/register" element={<RegisterPage />} />
+            <Route path="/cart" element={<CartPage />} />
+            <Route path='/products' element={<ProductsPage />} />
+            <Route path='/products/:id' element={<ProductPage />} />
+            <Route path='checkout' element={<CheckoutPage />} />
+
 
             {/* protected routes */}
             <Route element={<AuthGuard roles={["buyer"]} />}>
