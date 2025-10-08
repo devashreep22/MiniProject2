@@ -1,0 +1,154 @@
+/* General Page Styling */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Quicksand', sans-serif;
+  background: linear-gradient(135deg, #e3f9e5, #ffffff);
+  overflow-y: auto;
+}
+
+.page-wrapper {
+  padding: 20px;
+}
+
+/* Main Heading Above Card */
+.main-heading {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.main-heading h1 {
+  font-size: 2rem;
+  color: #2e7d32;
+  margin-bottom: 0.3rem;
+}
+
+.main-heading p {
+  font-size: 1rem;
+  color: #555;
+}
+
+/* Contact Card */
+.contact-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 40px;
+}
+
+.contact-card {
+  max-width: 550px;
+  width: 100%;
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.contact-card h2 {
+  text-align: center;
+  color: #388e3c;
+  margin-bottom: 5px;
+}
+
+.subheading {
+  text-align: center;
+  color: #666;
+  font-size: 0.95rem;
+  margin-bottom: 20px;
+}
+
+/* Form Fields */
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 600;
+  color: #333;
+  font-size: 0.95rem;
+}
+
+input, textarea, select {
+  width: 100%;
+  padding: 9px 12px;
+  font-size: 0.95rem;
+  border: 2px solid #c8e6c9;
+  border-radius: 10px;
+  background-color: #f9fef9;
+  transition: all 0.3s ease;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: #66bb6a;
+  outline: none;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 2px #a5d6a7;
+}
+
+/* Terms & Conditions Checkbox */
+.checkbox-group {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.9rem;
+  margin-top: 15px;
+}
+
+.checkbox-group input[type="checkbox"] {
+  margin-top: 4px;
+}
+
+/* Submit Button */
+button[type="submit"] {
+  margin-top: 20px;
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(to right, #66bb6a, #43a047);
+  border: none;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background: linear-gradient(to right, #43a047, #2e7d32);
+}
+
+/* Success Message */
+#responseMessage {
+  text-align: center;
+  margin-top: 15px;
+  color: #2e7d32;
+  font-weight: bold;
+}
+.continue-btn {
+  margin-top: 12px;
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(to right, #4caf50, #81c784);
+  border: none;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.continue-btn:hover {
+  background: linear-gradient(to right, #388e3c, #66bb6a);
+}

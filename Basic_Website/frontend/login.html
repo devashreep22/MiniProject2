@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="google-translate-customization" content="">
+<script type="text/javascript">
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+      pageLanguage: 'en',
+      includedLanguages: 'en,hi,mr',
+      layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL
+    }, 'google_translate_element');
+  }
+</script>
+
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Farm2You - Login / Signup</title>
+  <link rel="stylesheet" href="css/login.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <button id="theme-toggle">🌙</button>
+
+  <div class="form-container">
+    <div class="form-toggle">
+      <button id="loginToggle" class="active">Login</button>
+      <button id="signupToggle">Sign Up</button>
+    </div>
+
+    <!-- Login Form -->
+    <form id="loginForm" class="form">
+      <h2>Login</h2>
+      <input type="email" placeholder="Email" required />
+      <div class="password-wrapper">
+        <input type="password" placeholder="Password" id="loginPassword" required />
+        <span class="toggle-password" onclick="togglePassword('loginPassword', this)">👁️</span>
+      </div>
+      <button type="submit">Login</button>
+    </form>
+
+    <!-- Signup Form -->
+    <form id="signupForm" class="form hidden">
+      <h2>Sign Up</h2>
+
+      <label for="role">You are a:</label>
+      <div class="role-select">
+        <label><input type="radio" name="role" value="buyer" checked /> Buyer</label>
+        <label><input type="radio" name="role" value="farmer" /> Farmer</label>
+      </div>
+
+      <input type="text" placeholder="Full Name" required />
+      <input type="text" id="signupEmail" placeholder="Email" required 
+             pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+             title="Please enter a valid email" />
+
+      <input type="tel" id="signupPhone" placeholder="Phone Number" required 
+             pattern="^[6-9]\d{9}$" title="Enter a valid 10-digit number" />
+
+      <!-- 📍 District & Taluka -->
+      <label for="district">District</label>
+      <select id="district" required>
+        <option value="">Select District</option>
+        <option value="sangli">Sangli</option>
+        <option value="pune">Pune</option>
+        <option value="satara">Satara</option>
+        <option value="kolhapur">Kolhapur</option>
+        <option value="mumbai">Mumbai</option>
+      </select>
+
+      <label for="taluka">Taluka</label>
+      <select id="taluka" required>
+        <option value="">Select Taluka</option>
+      </select>
+
+      <!-- Farmer fields -->
+      <div id="farmerFields" class="hidden">
+        <input type="text" id="crops" placeholder="Crops Grown" />
+        <input type="text" id="land" placeholder="Land Size" />
+        <input type="text" id="experience" placeholder="Experience" />
+      </div>
+
+      <div class="password-wrapper">
+        <input type="password" placeholder="Password" id="signupPassword" required />
+        <span class="toggle-password" onclick="togglePassword('signupPassword', this)">👁️</span>
+      </div>
+      <button type="submit">Register</button>
+    </form>
+  </div>
+
+  <script src="js/login.js"></script>
+  
+</body>
+</html>

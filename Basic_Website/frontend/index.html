@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="google-translate-customization" content="">
+<script type="text/javascript">
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+      pageLanguage: 'en',
+      includedLanguages: 'en,hi,mr',
+      layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL
+    }, 'google_translate_element');
+  }
+</script>
+
+<script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Farm2You</title>
+
+  <!-- Fonts and Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css" />
+   <link rel="stylesheet" href="css/product.css" />
+     <link rel="stylesheet" href="css/our-story.css" />
+     <link rel="stylesheet" href="css/adopt.css" />
+     <link rel="stylesheet" href="css/review.css" />
+     <link rel="stylesheet" href="css/calender.css" />
+
+
+</head>
+
+<body class="home-page light-mode">
+
+  <!-- Header -->
+  <header>
+    <div class="logo">🌱 Farm2You</div>
+    <nav class="navbar">
+      <a href="#">Home</a>
+    <a href="#products">Products</a>
+      <a href="#adopt-farm">Adopt farm</a>
+      <a href="#our-story">Our story</a>
+      <a href="login.html" class="login-btn">Login</a>
+    </nav>
+    <!-- Calendar Icon (Opens Popup) -->
+      <div class="calendar-icon">
+        <i class="fas fa-calendar-alt" id="calendarToggle" title="Seasonal Calendar"></i>
+      </div>
+    <div style="display: flex; align-items: center; gap: 1rem;">
+    <div class="header-controls">
+      <div class="language-selector">
+      <div id="google_translate_element"></div>
+
+      </div>
+     
+      <button id="toggle-mode">🌙</button>
+      <button class="mobile-menu-toggle" id="mobileMenuToggle">
+        <i class="fas fa-bars"></i>
+      </button>
+
+    </div>
+    <!-- Popup Calendar -->
+    <div id="calendarPopup" class="calendar-popup">
+      <div class="calendar-header">
+        <button id="prev-month">◀</button>
+        <h2 id="month-year"></h2>
+        <button id="next-month">▶</button>
+      </div>
+      <div id="calendar" class="calendar-grid"></div>
+    </div>
+  </header>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-text">
+      <h1 id="hero-title">Fresh vegetables<br>From <span>Farm2You</span></h1>
+      <p id="hero-desc">We deliver farm-fresh vegetable and fruits right to your doorstep.</p>
+      <div class="hero-buttons">
+        <button class="order-btn" id="orderBtn">Order Now</button>
+       <a href="#products">
+  <button class="outline-btn" id="exploreBtn">Explore</button>
+       </a>
+
+      </div>
+      <div class="features">
+        <div class="feature">🚚 <strong>Fast Delivery</strong><br>Within 30 minutes</div>
+        <div class="feature">🌿 <strong>100% Organic</strong><br>Grown naturally</div>
+      </div>
+    </div>
+    <div class="hero-image">
+      <img src="images/farm-basket.jpg" alt="Farm Basket" />
+    </div>
+  </section>
+
+  <!-- Chatbot (only for homepage) -->
+  <button class="chatbot-btn">💬 AI Chatbot</button>
+
+
+  <section id="products">
+     <h2 class="products-heading">Our Products</h2>
+
+<div class="category-container">
+
+  <a href="leafy.html" class="category-link">
+  <div class="category" data-category="leafy">
+    <img src="images/leafy.jpg" alt="Leafy">
+    <p>Leafy</p>
+  </div>
+</a>
+
+
+  <a href="root.html" class="category-link">
+  <div class="category" data-category="root">
+    <img src="images/root.jpg" alt="root">
+    <p>Root</p>
+  </div>
+</a>
+
+<a href="fruit.html" class="category-link">
+  <div class="category" data-category="fruit">
+    <img src="images/fruit.jpg" alt="fruit">
+    <p>Fruits</p>
+  </div>
+</a>
+
+<a href="all.html" class="category-link">
+  <div class="category" data-category="All">
+    <img src="images/all.jpg" alt="All">
+    <p>All</p>
+  </div>
+</a>
+
+
+    <div id="product-cards" class="product-cards">
+      <!-- Cards will be dynamically inserted here -->
+    </div>
+  </section>
+  <!-- 👇 ADOPT A FARM SECTION -->
+<section id="adopt-farm" class="adopt-section">
+  <h1 class="page-title">Adopt a Farm</h1>
+  <div id="farmContainer" class="farm-container"></div>
+</section>
+<!-- Our Story Section -->
+  <section id="our-story" class="our-story-section">
+    <div class="story-container">
+      <div class="story-text">
+        <h2 style="text-align: center;">Our Story</h2>
+        <p>
+          In a small village where fields whisper stories of generations, Farm2You began as a dream — a dream where farmers are respected, not exploited. Our founders walked miles through rural farms, learning how disconnected modern markets are from the roots that feed them.
+        </p>
+        <p>
+          Today, Farm2You empowers local farmers with technology and fair trade, ensuring that what reaches your plate is not only fresh, but also honest. Every tomato, mango, or beetroot carries a farmer’s story — and with your support, those stories grow.
+        </p>
+      </div>
+      <div class="story-image">
+        <img src="images/our-story.jpg" alt="Farmer with produce">
+      </div>
+        <label for="payment-method" class="visually-hidden">Payment Method</label>
+        <select name="method" id="payment-method" required>
+          <option value="">Select Payment Method</option>
+          <option value="upi">UPI</option>
+          <option value="netbanking">Net Banking</option>
+          <option value="card">Credit/Debit Card</option>
+        </select>
+
+      <form id="donation-form">
+        <input type="text" name="fullname" placeholder="Full Name" required>
+        <input type="email" name="email" placeholder="Email (optional)">
+        <input type="number" name="amount" placeholder="Amount (₹)" required>
+
+        <select name="method" id="payment-method" required>
+          <option value="">Select Payment Method</option>
+          <option value="upi">UPI</option>
+          <option value="netbanking">Net Banking</option>
+          <option value="card">Credit/Debit Card</option>
+        </select>
+
+        <!-- UPI Section -->
+        <div class="payment-details" id="upi-section">
+          <p>Scan QR or enter UPI ID</p>
+          <img src="images/scanner.jpg" alt="QR Code for Donation">
+          <input type="text" name="upi-id" placeholder="Enter your UPI ID">
+        </div>
+
+        <!-- Net Banking Section -->
+        <div class="payment-details" id="netbanking-section">
+          <input type="text" name="bank-name" placeholder="Bank Name">
+          <input type="text" name="account-number" placeholder="Account Number">
+        </div>
+
+        <!-- Card Section -->
+        <div class="payment-details" id="card-section">
+          <input type="text" name="card-number" placeholder="Card Number">
+          <input type="text" name="expiry" placeholder="MM/YY">
+          <input type="text" name="cvv" placeholder="CVV">
+        </div>
+
+        <button type="submit" class="donate-btn">Donate Now</button>
+      </form>
+    </div>
+  </section>
+
+  <section class="review-section">
+    <h2 class="section-title">What People Say</h2>
+    <div class="carousel-container">
+      <button class="scroll-btn left" onclick="scrollLeft()">&#8592;</button>
+      <div class="carousel" id="carousel">
+        <!-- One Review Card -->
+        <div class="review-card">
+          <p class="review-message">"Amazing service! Highly recommended."</p>
+          <div class="reviewer">
+            <span class="name">Aarav Mehta</span>
+            <span class="location">Mumbai</span>
+          </div>
+          <div class="stars">⭐⭐⭐⭐⭐</div>
+        </div>
+
+        <div class="review-card">
+          <p class="review-message">"Fresh vegetables delivered on time."</p>
+          <div class="reviewer">
+            <span class="name">Neha Sharma</span>
+            <span class="location">Delhi</span>
+          </div>
+          <div class="stars">⭐⭐⭐⭐</div>
+        </div>
+
+        <div class="review-card">
+          <p class="review-message">"Very helpful and responsive team."</p>
+          <div class="reviewer">
+            <span class="name">Rahul Verma</span>
+            <span class="location">Pune</span>
+          </div>
+          <div class="stars">⭐⭐⭐⭐⭐</div>
+        </div>
+
+        <div class="review-card">
+          <p class="review-message">"Reasonable pricing and good variety."</p>
+          <div class="reviewer">
+            <span class="name">Priya Nair</span>
+            <span class="location">Chennai</span>
+          </div>
+          <div class="stars">⭐⭐⭐⭐</div>
+        </div>
+
+        <div class="review-card">
+          <p class="review-message">"Highly professional delivery staff."</p>
+          <div class="reviewer">
+            <span class="name">Ankit Joshi</span>
+            <span class="location">Bangalore</span>
+          </div>
+          <div class="stars">⭐⭐⭐⭐⭐</div>
+        </div>
+
+        <div class="review-card">
+          <p class="review-message">"Excellent packaging and fresh items."</p>
+          <div class="reviewer">
+            <span class="name">Sneha Desai</span>
+            <span class="location">Ahmedabad</span>
+          </div>
+          <div class="stars">⭐⭐⭐⭐⭐</div>
+        </div>
+
+        <div class="review-card">
+          <p class="review-message">"Love the platform! Super easy to use."</p>
+          <div class="reviewer">
+            <span class="name">Rohan Kapoor</span>
+            <span class="location">Hyderabad</span>
+          </div>
+          <div class="stars">⭐⭐⭐⭐</div>
+        </div>
+
+      </div>
+      <button class="scroll-btn right" onclick="scrollRight()">&#8594;</button>
+    </div>
+  </section>
+
+
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-about">
+      <h3>Farm2You</h3>
+      <p>Connecting farmers directly to customers with fresh, organic produce delivered to your doorstep.</p>
+    </div>
+    <div class="footer-links">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Shop</a></li>
+        <li><a href="#">Adopt Farm</a></li>
+        <li><a href="contact.html">Contact us</a></li>
+      </ul>
+    </div>
+    <div class="footer-social">
+      <h4>Follow Us</h4>
+      <div class="social-icons">
+        <a href="facebook.com"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-whatsapp-in"></i></a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2025 Farm2You. All rights reserved.</p>
+  </div>
+</footer>
+
+  <!-- JavaScript -->
+  <script src="js/script.js"></script>
+  <script src="js/our-story.js"></script>
+    <script src="js/adopt.js"></script>
+    <script src="js/calender.js"></script>
+  <script src="js/review.js"></script>
+
+
+</body>

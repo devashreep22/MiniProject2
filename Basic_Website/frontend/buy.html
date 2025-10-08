@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="google-translate-customization" content="">
+<script type="text/javascript">
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+      pageLanguage: 'en',
+      includedLanguages: 'en,hi,mr',
+      layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL
+    }, 'google_translate_element');
+  }
+</script>
+
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Buy Product | Farm2You</title>
+
+  <!-- Fonts and Icons -->
+ 
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/buy.css">
+</head>
+<body>
+   <!-- Header -->
+  <header>
+    <div class="logo">🌱 Farm2You</div>
+    <nav class="navbar">
+      <a href="#">Home</a>
+    <a href="#products">Products</a>
+      <a href="#">Adopt farm</a>
+      <a href="#">Our story</a>
+      <a href="login.html" class="login-btn">Login</a>
+    </nav>
+    <div style="display: flex; align-items: center; gap: 1rem;">
+      <div class="language-selector">
+        <select id="languageDropdown">
+          <option value="en">English</option>
+          <option value="hi">हिंदी</option>
+          <option value="mr">मराठी</option>
+        </select>
+      </div>
+      <button id="toggle-mode">🌙</button>
+    </div>
+  </header>
+
+
+  <main class="product-detail">
+    <h2 class="section-title">🛍 Product Details</h2>
+    <div class="product-container">
+      <img src="images/farm-basket.jpg" alt="Farm Basket" class="product-image"/>
+
+      <div class="product-info">
+        <h3>Organic Farm Basket</h3>
+        <p class="description">A seasonal mix of fresh organic vegetables directly from our farm including spinach, tomatoes, potatoes and more.</p>
+        <p><strong>Weight:</strong> 2.5 Kg approx</p>
+        <p><strong>Base Price:</strong> ₹300</p>
+
+        <label for="coupon" class="coupon-label">Apply Coupon:</label>
+        <input type="text" id="coupon" placeholder="Enter code like SAVE20" class="coupon-input">
+
+        <div class="price-details">
+          <p>GST (5%): ₹15</p>
+          <p><strong>Total Price:</strong> <span id="totalPrice">₹315</span></p>
+        </div>
+
+        <button class="order-btn" onclick="applyCoupon()">Proceed to Pay</button>
+      </div>
+    </div>
+  </main>
+
+ <footer class="footer">
+  <div class="footer-container">
+    <div class="footer-about">
+      <h3>Farm2You</h3>
+      <p>Connecting farmers directly to customers with fresh, organic produce delivered to your doorstep.</p>
+    </div>
+    <div class="footer-links">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Shop</a></li>
+        <li><a href="#">Adopt Farm</a></li>
+        <li><a href="contact.html">Contact us</a></li>
+      </ul>
+    </div>
+    <div class="footer-social">
+      <h4>Follow Us</h4>
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2025 Farm2You. All rights reserved.</p>
+  </div>
+</footer>
+
+  <script src="js/buy.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+/* ===============================
+   Calendar Icon
+   =============================== */
+.calendar-icon {
+  font-size: 24px;
+  cursor: pointer;
+  color: #2e7d32;
+}
+.calendar-icon:hover {
+  color: #1b5e20;
+}
+
+/* ===============================
+   Centered Popup Calendar
+   =============================== */
+.calendar-popup {
+  display: none; /* Hidden until toggled */
+  position: fixed; /* Center it on screen */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.3);
+  width: 340px;
+  padding: 20px;
+  z-index: 999;
+}
+
+/* ===============================
+   Calendar Header
+   =============================== */
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.calendar-header h2 {
+  font-size: 18px;
+  color: #333;
+}
+
+/* ===============================
+   Calendar Grid
+   =============================== */
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  margin-top: 10px;
+  gap: 5px;
+}
+.calendar-day {
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 10px;
+  min-height: 60px;
+  font-size: 12px;
+  position: relative;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.calendar-day:hover {
+  background: #f5f5f5;
+}
+
+/* ===============================
+   Tooltip for Seasonal Produce
+   =============================== */
+.tooltip {
+  visibility: hidden;
+  background: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1000;
+  bottom: 110%;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  font-size: 11px;
+  width: 120px;
+}
+.calendar-day:hover .tooltip {
+  visibility: visible;
+  opacity: 1;
+}

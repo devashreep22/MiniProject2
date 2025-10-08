@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Adopt a Farm - Contact Farmer</title>
+  <link rel="stylesheet" href="css/contactfarmer.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="page-wrapper">
+
+    <header class="main-heading">
+      <h1>🌱 Adopt a Farm</h1>
+      <p>Support a local farmer by filling out this quick form!</p>
+    </header>
+
+    <div class="contact-wrapper">
+      <div class="contact-card">
+        <h2>🌾 Contact the Farmer</h2>
+        <p class="subheading">Have a question or want to support? Reach out!</p>
+
+        <form id="contactForm">
+
+          <div class="form-group">
+            <label for="farmerName">👨‍🌾 Farmer's Name</label>
+            <input type="text" id="farmerName" name="farmerName" placeholder="Farmer's name" required />
+          </div>
+
+          <div class="form-group">
+            <label for="farmId">🏡 Farm Name or ID</label>
+            <input type="text" id="farmId" name="farmId" placeholder="Farm ID or name" required />
+          </div>
+
+          <div class="form-group">
+            <label for="yourName">🧑‍💼 Your Full Name</label>
+            <input type="text" id="yourName" name="yourName" placeholder="Your name" required />
+          </div>
+
+          <div class="form-group">
+            <label for="email">📧 Email Address</label>
+            <input type="email" id="email" name="email" placeholder="you@example.com" required />
+          </div>
+
+          <div class="form-group">
+            <label for="phone">📱 Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="10-digit mobile number" required pattern="[0-9]{10}" />
+          </div>
+
+          <div class="form-group">
+            <label for="city">📍 Your City & State</label>
+            <input type="text" id="city" name="city" placeholder="e.g., Pune, Maharashtra" required />
+          </div>
+
+          <div class="form-group">
+            <label for="crop">🌱 Preferred Crop/Product</label>
+            <input type="text" id="crop" name="crop" placeholder="e.g., Tomatoes, Rice" required />
+          </div>
+
+          <div class="form-group">
+            <label for="duration">📅 Adoption Duration</label>
+            <select id="duration" name="duration" required>
+              <option value="">Select Duration</option>
+              <option value="1_month">1 Month</option>
+              <option value="3_months">3 Months</option>
+              <option value="6_months">6 Months</option>
+              <option value="1_year">1 Year</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="amount">💰 Support Amount (₹)</label>
+            <input type="number" id="amount" name="amount" placeholder="e.g., 1000" required min="100" />
+          </div>
+
+          <div class="form-group">
+            <label for="message">💬 Additional Message</label>
+            <textarea id="message" name="message" rows="3" placeholder="Any extra info..." required></textarea>
+          </div>
+
+          <div class="form-group checkbox-group">
+            <input type="checkbox" id="terms" required />
+            <label for="terms">
+              I agree to the <strong>Terms & Conditions</strong>: I understand that my contribution is voluntary, non-refundable, and will be used to support the selected farmer and their agricultural activities.
+            </label>
+          </div>
+
+          <button type="submit">📨 Submit Adoption Request</button>
+          <p id="responseMessage"></p>
+         
+
+<button type="button" class="continue-btn" onclick="window.location.href='index.html'">🛒 Continue Shopping</button>
+
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="contactfarmer.js"></script>
+</body>
+</html>

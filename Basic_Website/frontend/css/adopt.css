@@ -1,0 +1,123 @@
+/* Adopt a Farm Section */
+
+.adopt-section {
+  font-family: 'Quicksand', sans-serif;
+  color: #2e7d32;  /* Green color matching Our Products */
+  padding: 2rem;
+}
+
+.adopt-section .page-title {
+  font-weight: 700;
+  font-size: 2.5rem;
+  color: #6cbb4a; /* Updated vibrant green */
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+
+.farm-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+/* Card style */
+.farm-card {
+  background-color: white; /* White background */
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  width: 300px;
+  padding: 1rem;
+  font-weight: 500;
+  color: #333;
+  transition: transform 0.2s ease;
+}
+
+.farm-card:hover {
+  transform: translateY(-5px);
+}
+
+.farm-card h3 {
+  color: #2a7a2a;  /* Green title like products */
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.farm-card p {
+  margin-bottom: 1rem;
+}
+
+.farm-card button {
+  background-color: #2a7a2a;  /* Green button */
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 5px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.farm-card button:hover {
+  background-color: #1e5b1e;
+}
+/* Main farmer/farm image in card */
+.farm-card .farmer-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover; /* Ensures image fills the space properly */
+  border-radius: 10px;
+  margin-bottom: 0.8rem;
+}
+
+/* Crop icons inside each card */
+.crops-icons {
+  display: flex;
+  gap: 0.4rem;
+  margin-bottom: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.crops-icons img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+/* Dark Mode Styling */
+body.dark-mode {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+body.dark-mode .adopt-section {
+  color: #e0e0e0;
+}
+
+body.dark-mode .farm-card {
+  background-color: #1e1e1e;
+  color: #f0f0f0;
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.05);
+}
+
+body.dark-mode .farm-card h3 {
+  color: #6cbb4a; /* lighter green in dark mode */
+}
+
+body.dark-mode .farm-card button {
+  background-color: #6cbb4a;
+  color: #fff;
+}
+
+body.dark-mode .farm-card button:hover {
+  background-color: #6cbb4a;
+}
+body.dark-mode {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+body.dark-mode .farm-card {
+  background-color: #1e1e1e;
+  color: #ffffff;
+}
