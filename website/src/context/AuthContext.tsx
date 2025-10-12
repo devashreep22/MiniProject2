@@ -38,13 +38,25 @@ interface LoginData {
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
+// const mockUser: User = {
+//   id: "1",
+//   name: "Devashree",
+//   email: "devashree@gmail.com",
+//   role: "buyer",
+//   farmName: "MyFarm",
+//   farmAddress: "123 Main St, Anytown, USA",
+//   cropTypes: ["Wheat", "Corn"],
+// }
+
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
+  // const [user, setUser] = useState<User | null>(mockUser);
   const [user, setUser] = useState<User | null>(null);
   const [token, setToken] = useState<string | null>(localStorage.getItem("token"));
+  // const [token, setToken] = useState<string | null>("dummy-token");
   const [loading, setLoading] = useState<boolean>(false);
 
   const api = axios.create({
-    baseURL: "http://localhost:5000",
+    baseURL: "http://localhost:5000/api/v1",
     headers: {
       "Content-Type": "application/json",
       ...(token ? { Authorization: `Bearer ${token}` } : {}),
@@ -97,6 +109,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   };
 
   useEffect(() => {
+    // if(token === "dummy-token") return;
     if (token) {
       fetchProfile();
     }

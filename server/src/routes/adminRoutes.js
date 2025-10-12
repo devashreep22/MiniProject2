@@ -11,4 +11,6 @@ router.patch('/product/:id/approve', protect, adminOnly, adminController.approve
 // Verify farmer
 router.patch('/verify-farmer/:id', protect, adminOnly, adminController.verifyFarmer);
 
+router.get('/get-users', protect, adminOnly, adminController.getUsers);
+router.patch('/toggle-active/:id', protect, adminOnly, adminController.toggleActive);
 module.exports = router;

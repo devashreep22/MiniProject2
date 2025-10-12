@@ -98,3 +98,12 @@ exports.approveProduct = async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 };
+
+exports.getFarmerProducts = async (req, res) => {
+  try {
+    const products = await Product.find({ farmer: req.user.id }).sort({ createdAt: -1 });
+    res.json(products);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};

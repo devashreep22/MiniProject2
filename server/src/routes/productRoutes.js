@@ -28,5 +28,6 @@ router.get('/', productController.getProducts);
 router.get('/:id', productController.getProductById);
 // Admin: approve/reject product
 router.patch('/approve/:id', protect, adminOnly, productController.approveProduct);
+router.get('/farmer/my-products', protect, productController.getFarmerProducts);
 
 module.exports = router;

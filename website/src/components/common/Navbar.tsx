@@ -1,67 +1,117 @@
-
 import { Button } from "@/components/ui/button"
-import { LogoutButton } from "@/components/common/LogoutButton"
-import { Star } from "lucide-react"
-import { CartIcon } from "@/components/common/CartIcon"
-import { Link } from "react-router-dom"
+import { Input } from "@/components/ui/input"
+import { Avatar, AvatarFallback } from "@/components/ui/avatar"
+import { Search, Bell, Menu, X } from "lucide-react"
+import { useNavigate } from 'react-router-dom'
+import { useState, useRef, useEffect } from 'react'
 import { useAuth } from "@/context/AuthContext"
 
-export function NavBar() {
-  const {user} = useAuth();
-  return (
-    <header className="px-6 sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-16 items-center justify-between">
-        <div className="flex items-center gap-6 md:gap-10">
-          <Link to="/" className="flex items-center space-x-2">
-            <span className="text-xl font-bold text-green-600">Farmwise</span>
-          </Link>
-          <nav className="hidden gap-6 md:flex">
-            <Link to="/#products" className="text-sm font-medium transition-colors hover:text-green-600">
-              Products
-            </Link>
-            <Link to="/#about" className="text-sm font-medium transition-colors hover:text-green-600">
-              About
-            </Link>
-            <Link to="/#vendors" className="text-sm font-medium transition-colors hover:text-green-600">
-              Vendors
-            </Link>
-            <Link to="/#schedule" className="text-sm font-medium transition-colors hover:text-green-600">
-              Schedule
-            </Link>
-            <Link to="/#contact" className="text-sm font-medium transition-colors hover:text-green-600">
-              Contact
-            </Link>
-          </nav>
-        </div>
-        <div className="flex items-center gap-2">
-          <CartIcon />
+interface NavbarProps {
+  onMenuClick: () => void
+}
 
-          {user ? (
-            <>
-              <Link to="/loyalty">
-                <Button variant="ghost" className="hidden items-center gap-1 md:flex">
-                  <Star className="h-4 w-4 text-green-600" />
-                  <span>Rewards</span>
+export function Navbar({ onMenuClick }: NavbarProps) {
+  const navigate = useNavigate()
+  const [open, setOpen] = useState(false)
+  const popRef = useRef<HTMLDivElement | null>(null)
+  const { user, logout } = useAuth()
+
+  // close on outside click or Escape
+  useEffect(() => {
+    if (!open) return
+
+    const onDown = (e: MouseEvent) => {
+      const target = e.target as Node
+      if (popRef.current && !popRef.current.contains(target)) {
+        setOpen(false)
+      }
+    }
+
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setOpen(false)
+    }
+
+    document.addEventListener('mousedown', onDown)
+    document.addEventListener('keydown', onKey)
+
+    return () => {
+      document.removeEventListener('mousedown', onDown)
+      document.removeEventListener('keydown', onKey)
+    }
+  }, [open])
+  return (
+    <header className="flex h-16 items-center gap-2 border-b bg-background px-3 lg:gap-4 lg:px-4">
+      <Button variant="ghost" size="icon" onClick={onMenuClick} className="shrink-0 lg:flex">
+        <Menu className="h-5 w-5" />
+      </Button>
+
+      <div className="hidden flex-1 items-center md:flex lg:mx-4">
+        <div className="relative w-full max-w-2xl">
+          <Search className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-muted-foreground" />
+          <Input type="search" placeholder="Search..." className="w-full bg-muted pl-10 pr-4" />
+        </div>
+      </div>
+
+      <div className="flex flex-1 items-center md:hidden">
+        <div className="relative w-full">
+          <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+          <Input type="search" placeholder="Search documents..." className="w-full bg-muted pl-9 pr-3 text-sm" />
+        </div>
+      </div>
+
+      <div className="flex items-center gap-1 lg:gap-2">
+        <Button
+          variant="ghost"
+          size="icon"
+          onClick={() => navigate('/notifications')}
+        >
+          <Bell className="h-5 w-5" />
+        </Button>
+        <div className="relative ml-1">
+          <button onClick={() => setOpen((s) => !s)} aria-haspopup="dialog" aria-expanded={open}>
+            <Avatar className="h-8 w-8 lg:ml-2">
+              <AvatarFallback className="bg-primary text-sm font-medium text-primary-foreground">
+                {user?.name?.[0]?.toUpperCase() ?? user?.name?.[0]?.toUpperCase() ?? 'U'}
+              </AvatarFallback>
+            </Avatar>
+          </button>
+
+          {/* Popover card */}
+          {open && (
+            <div
+              ref={popRef}
+              className="absolute right-0 top-11 w-80 rounded-lg bg-popover p-4 shadow-lg z-50"
+            >
+              <div className="flex items-start justify-between">
+                <div className="text-sm text-muted-foreground">{user?.email}</div>
+                <button onClick={() => setOpen(false)} className="text-muted-foreground">
+                  <X className="h-4 w-4" />
+                </button>
+              </div>
+
+              <div className="flex flex-col items-center py-4">
+                <Avatar className="h-14 w-14">
+                  <AvatarFallback className="bg-green-500 text-white text-xl">
+                    {user?.name?.[0]?.toUpperCase() ?? user?.name?.[0]?.toUpperCase() ?? 'U'}
+                  </AvatarFallback>
+                </Avatar>
+                <h3 className="mt-3 text-lg font-medium">Hi, {user?.name ?? user?.name}</h3>
+              </div>
+
+              <div className="space-y-2 text-sm">
+                <div><strong>name:</strong> {user?.name}</div>
+                <div><strong>Email:</strong> {user?.email ?? '—'}</div>
+                <div><strong>Role:</strong> {user?.role}</div>
+              </div>
+
+              <div className="mt-3 grid gap-2">
+                <Button
+                  onClick={() => logout()}
+                >
+                  Log out
                 </Button>
-              </Link>
-              <Link to="/dashboard">
-                <Button variant="outline" className="hidden md:flex">
-                  Dashboard
-                </Button>
-              </Link>
-              <LogoutButton />
-            </>
-          ) : (
-            <>
-              <Link to="/login">
-                <Button variant="outline" className="hidden md:flex">
-                  Login
-                </Button>
-              </Link>
-              <Link to="/register">
-                <Button className="bg-green-600 hover:bg-green-700">Sign Up</Button>
-              </Link>
-            </>
+              </div>
+            </div>
           )}
         </div>
       </div>

@@ -7,7 +7,6 @@ import { ProductCard } from "@/components/common/ProductCard"
 import { VendorCard } from "@/components/common/VendorCard"
 import { ContactForm } from "@/components/common/ContactForm"
 import { Newsletter } from "@/components/common/NewsLetter"
-import { NavBar } from "@/components/common/Navbar"
 import { products } from "@/lib/mock/products"
 import { Link } from "react-router-dom"
 
@@ -18,7 +17,7 @@ export default function Home() {
   return (
     <div className="flex min-h-screen flex-col">
       {/* Navigation */}
-      <NavBar />
+      {/* <NavBar /> */}
 
       <main className="flex-1 px-6">
         {/* Hero Section */}
