@@ -18,9 +18,18 @@ function Home() {
       <p>Welcome to the Home Page!</p>
       <div className="flex gap-4">
         {user ? (
-          <Button onClick={() => logout() }>
+         <div>
+           <Button onClick={() => logout() }>
             logout
           </Button>
+          <Button onClick={() => navigate("/cart") }>
+            Cart
+          </Button>
+          <Button onClick={() => navigate("/products") }>
+            Products
+          </Button>
+         </div>
+          
         ) : (
           <>
             <Button onClick={() => navigate("/login")}>login</Button>

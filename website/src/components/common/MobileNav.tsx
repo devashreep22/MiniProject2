@@ -1,5 +1,5 @@
 // MobileNav.tsx
-import { Upload, User2, Home } from "lucide-react";
+import { Upload, User2, Home, ShoppingBag } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Link, useLocation } from "react-router-dom";
 import { useAuth } from "@/context/AuthContext";
@@ -12,6 +12,7 @@ const farmerNavItems = [
 const adminNavItems = [
   { icon: Home, label: "Home", href: "/admin" },
   { icon: User2, label: "Users", href: "/admin/users" },
+  { icon: ShoppingBag, label: "Products", href: "/admin/verify-products" },
 ];
 
 export function MobileNav() {

@@ -57,12 +57,16 @@ import DashboardLayout from "@/Layouts/DashboardLayout";
 import VerifyFarmers from "@/pages/Admin/VerifyFarmers";
 import AddProducts from "@/pages/Farmer/FarmerProducts";
 import VerifyProducts from "@/pages/Admin/VerifyProducts";
+import Cart from "@/pages/buyer/Cart";
+import Products from "@/pages/Products/Products";
+import MainPage from "@/pages/Landing/MainPage";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
       {/* Public pages */}
-      <Route path="/" element={<Home />} />
+      {/* <Route path="/" element={<Home />} /> */}
+      <Route path="/" element={<MainPage />} />
       <Route element={<AuthGuard publicOnly />}>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
@@ -80,10 +84,15 @@ const router = createBrowserRouter(
           <Route path="/farmer" element={<FarmerDashboard />} />
           <Route path="/farmer/add-products" element={<AddProducts />} />
         </Route>
-        <Route element={<AuthGuard roles={["buyer"]} />}>
-          <Route path="/buyer" element={<Buyer />} />
-        </Route>
       </Route>
+
+      <Route element={<AuthGuard roles={["buyer"]} />}>
+        <Route path="/buyer" element={<Buyer />} />
+        <Route path="/cart" element={<Cart />} />
+      </Route>
+
+      <Route path='/products' element={<Products />} />
+      <Route path="*" element={<div>404 Not Found</div>} />
     </>
   )
 );

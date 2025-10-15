@@ -60,13 +60,6 @@ export function Navbar({ onMenuClick }: NavbarProps) {
       </div>
 
       <div className="flex items-center gap-1 lg:gap-2">
-        <Button
-          variant="ghost"
-          size="icon"
-          onClick={() => navigate('/notifications')}
-        >
-          <Bell className="h-5 w-5" />
-        </Button>
         <div className="relative ml-1">
           <button onClick={() => setOpen((s) => !s)} aria-haspopup="dialog" aria-expanded={open}>
             <Avatar className="h-8 w-8 lg:ml-2">
