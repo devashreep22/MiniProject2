@@ -23,7 +23,7 @@ const AuthGuard = ({ roles, publicOnly = false, redirectTo = "/login" }: AuthGua
       case "farmer":
         return "/farmer";
       case "buyer":
-        return "/buyer";
+        return "/";
       default:
         return "/";
     }

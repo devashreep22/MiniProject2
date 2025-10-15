@@ -5,6 +5,7 @@ import {
   updateProduct, 
   deleteProduct, 
   getFarmerProducts,
+  getPendingProducts,
   approveProduct,
   type Product 
 } from "./productApi";
@@ -15,6 +16,7 @@ export const useProduct = () => {
   const [success, setSuccess] = useState<string | null>(null);
   const [products, setProducts] = useState<Product[]>([]);
   const [farmerProducts, setFarmerProducts] = useState<Product[]>([]);
+  const [pendingProducts, setPendingProducts] = useState<Product[]>([]);
   const [categories, setCategories] = useState<string[]>([]);
 
   // Clear messages
@@ -30,7 +32,6 @@ export const useProduct = () => {
     try {
       const product = await createProduct(productData);
       setSuccess("Product created successfully!");
-      // Add to farmer products list
       setFarmerProducts(prev => [product, ...prev]);
       return product;
     } catch (err: any) {
@@ -74,6 +75,22 @@ export const useProduct = () => {
     }
   };
 
+  // Get pending products (Admin)
+  const fetchPendingProducts = async () => {
+    setLoading(true);
+    try {
+      const pendingProductsData = await getPendingProducts();
+      setPendingProducts(pendingProductsData);
+      return pendingProductsData;
+    } catch (err: any) {
+      const errorMessage = err.response?.data?.message || err.message || "Failed to fetch pending products";
+      setError(errorMessage);
+      throw err;
+    } finally {
+      setLoading(false);
+    }
+  };
+
   // Update product
   const handleUpdateProduct = async (id: string, productData: Partial<Product>) => {
     setLoading(true);
@@ -84,7 +101,6 @@ export const useProduct = () => {
       const updatedProduct = await updateProduct(id, productData);
       setSuccess("Product updated successfully!");
       
-      // Update in farmer products list
       setFarmerProducts(prev => 
         prev.map(product => 
           product._id === id ? updatedProduct : product
@@ -110,7 +126,6 @@ export const useProduct = () => {
       await deleteProduct(id);
       setSuccess("Product deleted successfully!");
       
-      // Remove from farmer products list
       setFarmerProducts(prev => prev.filter(product => product._id !== id));
       
     } catch (err: any) {
@@ -123,13 +138,17 @@ export const useProduct = () => {
   };
 
   // Approve product (Admin)
-  const handleApproveProduct = async (id: string, status: string) => {
+  const handleApproveProduct = async (id: string, status: 'approved' | 'rejected') => {
     setLoading(true);
     setError(null);
     
     try {
       const result = await approveProduct(id, status);
       setSuccess(`Product ${status} successfully!`);
+      
+      // Remove from pending products list
+      setPendingProducts(prev => prev.filter(product => product._id !== id));
+      
       return result;
     } catch (err: any) {
       const errorMessage = err.response?.data?.message || err.message || "Failed to update product status";
@@ -155,12 +174,14 @@ export const useProduct = () => {
     success,
     products,
     farmerProducts,
+    pendingProducts,
     categories,
     
     // Actions
     handleCreateProduct,
     fetchProducts,
     fetchFarmerProducts,
+    fetchPendingProducts,
     handleUpdateProduct,
     handleDeleteProduct,
     handleApproveProduct,

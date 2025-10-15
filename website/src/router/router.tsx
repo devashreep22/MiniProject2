@@ -56,6 +56,7 @@ import Buyer from "@/pages/buyer/Buyer";
 import DashboardLayout from "@/Layouts/DashboardLayout";
 import VerifyFarmers from "@/pages/Admin/VerifyFarmers";
 import AddProducts from "@/pages/Farmer/FarmerProducts";
+import VerifyProducts from "@/pages/Admin/VerifyProducts";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -73,7 +74,7 @@ const router = createBrowserRouter(
           <Route path="/admin" element={<AdminDashboard />} />
           <Route path="/admin/users" element={<VerifyFarmers />} />
           <Route path="/admin/create-users" element={<div>Manage Users</div>} />
-          <Route path="/admin/verify-products" element={<div>Verify Products</div>} />
+          <Route path="/admin/verify-products" element={<VerifyProducts />} />
         </Route>
         <Route element={<AuthGuard roles={["farmer"]} />}>
           <Route path="/farmer" element={<FarmerDashboard />} />

@@ -24,17 +24,55 @@ exports.toggleActive = async (req, res) => {
 };
 
 exports.getPendingProducts = async (req, res) => {
-  const products = await Product.find({ status: 'pending' }).populate('farmer', 'name farmName');
-  res.json(products);
+  try {
+    console.log('Fetching pending products...');
+    const products = await Product.find({ status: 'pending' })
+      .populate('farmer', 'name farmName email')
+      .sort({ createdAt: -1 });
+    
+    console.log(`Found ${products.length} pending products`);
+    res.json(products);
+  } catch (error) {
+    console.error('Error fetching pending products:', error);
+    res.status(500).json({ message: 'Server error', error: error.message });
+  }
 };
 
+// Approve/reject product
 exports.approveProduct = async (req, res) => {
-  const product = await Product.findById(req.params.id);
-  if (!product) return res.status(404).json({ message: 'Product not found' });
-  product.status = req.body.status || 'approved';
-  await product.save();
-  res.json({ message: `Product ${product.status}` });
+  try {
+    const { id } = req.params;
+    const { status } = req.body;
+
+    console.log(`Approving product ${id} with status: ${status}`);
+
+    // Validate status
+    if (!['approved', 'rejected'].includes(status)) {
+      return res.status(400).json({ message: 'Invalid status. Use "approved" or "rejected"' });
+    }
+
+    // Find and update product
+    const product = await Product.findById(id);
+    
+    if (!product) {
+      console.log(`Product ${id} not found`);
+      return res.status(404).json({ message: 'Product not found' });
+    }
+
+    product.status = status;
+    await product.save();
+
+    console.log(`Product ${id} status updated to ${status}`);
+    res.json({ 
+      message: `Product ${status} successfully`,
+      product 
+    });
+  } catch (error) {
+    console.error('Error approving product:', error);
+    res.status(500).json({ message: 'Server error', error: error.message });
+  }
 };
+
 
 exports.verifyFarmer = async (req, res) => {
   try {

@@ -131,9 +131,17 @@ export const getFarmerProducts = async (): Promise<Product[]> => {
   return res.data;
 };
 
+// Get pending products (Admin only)
+export const getPendingProducts = async (): Promise<Product[]> => {
+  const res = await axios.get(`${BASE_URL}/api/v1/admin/pending-products`, {
+    headers: getAuthHeader(),
+  });
+  return res.data;
+};
+
 // Approve product (Admin only)
-export const approveProduct = async (id: string, status: string): Promise<{ message: string }> => {
-  const res = await axios.patch(`${BASE_URL}/api/v1/products/${id}/approve`, 
+export const approveProduct = async (id: string, status: 'approved' | 'rejected'): Promise<{ message: string }> => {
+  const res = await axios.patch(`${BASE_URL}/api/v1/admin/products/${id}/approve`, 
     { status },
     { headers: getAuthHeader() }
   );
