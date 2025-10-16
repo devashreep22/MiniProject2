@@ -47,7 +47,6 @@ import {
   Route,
 } from "react-router-dom";
 import AuthGuard from "@/components/common/AuthGuard";
-import Home from "@/pages/Landing/Home";
 import Login from "@/pages/Auth/Login";
 import Register from "@/pages/Auth/Register";
 import AdminDashboard from "@/pages/Admin/AdminDashboard";
@@ -62,6 +61,8 @@ import Products from "@/pages/Products/Products";
 import MainPage from "@/pages/Landing/MainPage";
 import Checkout from "@/pages/Products/Checkout";
 import Orders from "@/pages/Products/Order";
+import OrderDetail from "@/pages/Products/OrderDetail";
+import FarmerOrders from "@/pages/Farmer/FarmerOrders";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -85,6 +86,7 @@ const router = createBrowserRouter(
         <Route element={<AuthGuard roles={["farmer"]} />}>
           <Route path="/farmer" element={<FarmerDashboard />} />
           <Route path="/farmer/add-products" element={<AddProducts />} />
+          <Route path="/farmer/bookings" element={<FarmerOrders />} />
         </Route>
       </Route>
 
@@ -92,8 +94,8 @@ const router = createBrowserRouter(
         <Route path="/buyer" element={<Buyer />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/checkout" element={<Checkout />} />
-        <Route path="/order" element={<Orders />} />
-        <Route path="/orders/:id" element={<Orders />} />
+        <Route path="/orders" element={<Orders />} />
+        <Route path="/orders/:orderId" element={<OrderDetail />} />
       </Route>
 
       <Route path='/products' element={<Products />} />

@@ -1,5 +1,5 @@
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Upload, User2, Home, ShoppingBag } from "lucide-react";
+import { Upload, User2, Home, ShoppingBag, BookIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Link } from "react-router-dom";
 import { useAuth } from "@/context/AuthContext";
@@ -12,6 +12,7 @@ interface SidebarProps {
 const farmerNavigationItems = [
   { icon: Home, label: "Home", href: "/farmer" },
   { icon: Upload, label: "Add Products", href: "/farmer/add-products" },
+  { icon: BookIcon, label: "Bookings", href: "/farmer/bookings" },
 ];
 
 const adminNavigationItems = [

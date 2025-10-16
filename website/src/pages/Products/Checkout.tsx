@@ -4,6 +4,7 @@ import { useCart } from '@/services/Cart/useCart';
 import { getImageUrl } from '@/services/Products/productApi';
 import { useOrder } from '@/services/Order/useOrder';
 import type { ShippingAddress } from '@/services/Order/orderApi';
+import { Link } from 'react-router-dom';
 
 const Checkout = () => {
   const { cart, cartTotals, fetchCart, clearCart } = useCart();
@@ -120,18 +121,16 @@ const Checkout = () => {
             <p className="text-lg font-mono font-semibold text-gray-900">{orderId}</p>
           </div>
           <div className="space-y-3">
-            <a
-              href={`/orders/${orderId}`}
+            <Link to={`/orders/${orderId}`}
               className="block w-full bg-green-600 text-white py-3 rounded-lg font-medium hover:bg-green-700 transition-colors"
             >
               View Order Details
-            </a>
-            <a
-              href="/orders"
+            </Link>
+            <Link to={`/orders`}
               className="block w-full border border-gray-300 text-gray-700 py-3 rounded-lg font-medium hover:bg-gray-50 transition-colors"
             >
               View All Orders
-            </a>
+            </Link>
             <a
               href="/products"
               className="block w-full text-green-600 py-3 rounded-lg font-medium hover:bg-green-50 transition-colors"

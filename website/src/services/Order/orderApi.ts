@@ -80,13 +80,13 @@ export const orderApi = {
 
   // Get buyer's orders
   getMyOrders: async (): Promise<Order[]> => {
-    const response = await api.get('/orders/my-orders');
+    const response = await api.get('/orders/my');
     return response.data;
   },
 
   // Get farmer's orders
   getFarmerOrders: async (): Promise<Order[]> => {
-    const response = await api.get('/orders/farmer-orders');
+    const response = await api.get('/orders/farmer');
     return response.data;
   },
 

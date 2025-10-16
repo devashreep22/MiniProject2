@@ -2,14 +2,16 @@ import { useEffect, useState } from 'react';
 import { ArrowLeft, Package, MapPin, CreditCard, Clock, AlertCircle } from 'lucide-react';
 import { getImageUrl } from '@/services/Products/productApi';
 import { useOrder } from '@/services/Order/useOrder';
+import { useParams } from 'react-router-dom';
 
 interface OrderDetailProps {
   orderId: string;
 }
 
-const OrderDetail = ({ orderId }: OrderDetailProps) => {
+const OrderDetail = () => {
   const { currentOrder, loading, error, fetchOrderById, updateOrderStatus } = useOrder();
   const [updating, setUpdating] = useState(false);
+  const { orderId } = useParams<{ orderId: string }>();
 
   useEffect(() => {
     if (orderId) {

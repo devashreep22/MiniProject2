@@ -5,7 +5,7 @@ import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/context/AuthContext";
-import { ShoppingBag } from "lucide-react";
+import { ShoppingBag, Package } from "lucide-react";
 
 interface HeaderProps {
   darkMode: boolean;
@@ -15,7 +15,7 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ darkMode, setDarkMode, onCalendarToggle }) => {
   const navigate = useNavigate();
-  const { user, logout } = useAuth(); // get current logged in user
+  const { user, logout } = useAuth();
 
   const navItems = [
     { path: "/", label: "Home" },
@@ -76,11 +76,26 @@ const Header: React.FC<HeaderProps> = ({ darkMode, setDarkMode, onCalendarToggle
             {/* Auth Buttons */}
             {user ? (
               <>
-                {/* Show cart icon and logout if logged in */}
-                <Button variant="ghost" size="icon" onClick={() => navigate("/cart")}>
-                  {/* <i className="fas fa-shopping-cart text-lg" /> */}
+                {/* Orders Icon - NEW! */}
+                <Button 
+                  variant="ghost" 
+                  size="icon" 
+                  onClick={() => navigate("/orders")}
+                  title="My Orders"
+                >
+                  <Package className="w-6 h-6" />
+                </Button>
+
+                {/* Cart Icon */}
+                <Button 
+                  variant="ghost" 
+                  size="icon" 
+                  onClick={() => navigate("/cart")}
+                  title="Shopping Cart"
+                >
                   <ShoppingBag className="w-6 h-6" />
                 </Button>
+
                 <Button variant="outline" onClick={logout}>
                   Logout
                 </Button>
@@ -124,7 +139,21 @@ const Header: React.FC<HeaderProps> = ({ darkMode, setDarkMode, onCalendarToggle
 
                   {user ? (
                     <>
-                      <Button className="w-full" onClick={() => navigate("/cart")}>
+                      {/* Orders Button - NEW! */}
+                      <Button 
+                        className="w-full" 
+                        onClick={() => navigate("/orders")}
+                        variant="outline"
+                      >
+                        <Package className="w-5 h-5 mr-2" />
+                        My Orders
+                      </Button>
+                      <Button 
+                        className="w-full" 
+                        onClick={() => navigate("/cart")}
+                        variant="outline"
+                      >
+                        <ShoppingBag className="w-5 h-5 mr-2" />
                         Cart
                       </Button>
                       <Button className="w-full" onClick={logout}>
