@@ -109,11 +109,16 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   };
 
   useEffect(() => {
-    // if(token === "dummy-token") return;
+  const initialize = async () => {
     if (token) {
-      fetchProfile();
+      await fetchProfile();
+    } else {
+      setLoading(false); // ✅ stop loading when no token
     }
-  }, [token]);
+  };
+  initialize();
+}, [token]);
+
 
   return (
     <AuthContext.Provider
