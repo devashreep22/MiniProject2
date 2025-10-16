@@ -60,6 +60,8 @@ import VerifyProducts from "@/pages/Admin/VerifyProducts";
 import Cart from "@/pages/buyer/Cart";
 import Products from "@/pages/Products/Products";
 import MainPage from "@/pages/Landing/MainPage";
+import Checkout from "@/pages/Products/Checkout";
+import Orders from "@/pages/Products/Order";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -89,6 +91,9 @@ const router = createBrowserRouter(
       <Route element={<AuthGuard roles={["buyer"]} />}>
         <Route path="/buyer" element={<Buyer />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/checkout" element={<Checkout />} />
+        <Route path="/order" element={<Orders />} />
+        <Route path="/orders/:id" element={<Orders />} />
       </Route>
 
       <Route path='/products' element={<Products />} />

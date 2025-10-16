@@ -4,10 +4,10 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
 import { ProductCard } from "@/components/common/ProductCard"
-import { NavBar } from "@/components/common/Navbar"
 import { AddToCartButton } from "@/components/common/AddToCarButton"
 import { Link, useNavigate, useParams } from "react-router-dom"
 import { type Product, getProductById, getRelatedProducts } from "@/lib/mock/products"
+import { Navbar } from "@/components/common/Navbar"
 
 export default function ProductPage() {
   const { id } = useParams<{ id: string }>()
@@ -39,7 +39,7 @@ export default function ProductPage() {
 
   return (
     <div className="flex min-h-screen flex-col">
-      <NavBar />
+      {/* <Navbar /> */}
 
       <main className="flex-1 py-10">
         <div className="container">
