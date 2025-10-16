@@ -11,16 +11,6 @@ interface User {
   cropTypes?: string[];
 }
 
-interface AuthContextType {
-  user: User | null;
-  loading: boolean;
-  register: (data: RegisterData) => Promise<void>;
-  login: (data: LoginData) => Promise<void>;
-  logout: () => void;
-  fetchProfile: () => Promise<void>;
-  token: string | null;
-}
-
 interface RegisterData {
   name: string;
   email: string;
@@ -36,23 +26,21 @@ interface LoginData {
   password: string;
 }
 
+interface AuthContextType {
+  user: User | null;
+  loading: boolean;
+  token: string | null;
+  register: (data: RegisterData) => Promise<void>;
+  login: (data: LoginData) => Promise<void>;
+  logout: () => void;
+  fetchProfile: () => Promise<void>;
+}
+
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-// const mockUser: User = {
-//   id: "1",
-//   name: "Devashree",
-//   email: "devashree@gmail.com",
-//   role: "buyer",
-//   farmName: "MyFarm",
-//   farmAddress: "123 Main St, Anytown, USA",
-//   cropTypes: ["Wheat", "Corn"],
-// }
-
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
-  // const [user, setUser] = useState<User | null>(mockUser);
   const [user, setUser] = useState<User | null>(null);
   const [token, setToken] = useState<string | null>(localStorage.getItem("token"));
-  // const [token, setToken] = useState<string | null>("dummy-token");
   const [loading, setLoading] = useState<boolean>(true);
 
   const api = axios.create({
@@ -63,10 +51,25 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     },
   });
 
+  // ✅ Register user and auto-login
   const register = async (data: RegisterData) => {
     setLoading(true);
     try {
-      await api.post("/auth/register", data);
+      const res = await api.post("/auth/register", data);
+
+      // If backend returns token immediately (recommended)
+      if (res.data.token) {
+        const { token } = res.data;
+        localStorage.setItem("token", token);
+        setToken(token);
+        await fetchProfile();
+      } else {
+        // Otherwise, user must log in manually
+        console.warn("No token returned after registration. Redirect to login.");
+      }
+    } catch (error: any) {
+      console.error("Registration failed:", error);
+      throw error; // rethrow to handle in UI
     } finally {
       setLoading(false);
     }
@@ -80,6 +83,9 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       localStorage.setItem("token", token);
       setToken(token);
       await fetchProfile();
+    } catch (error: any) {
+      console.error("Login failed:", error);
+      throw error;
     } finally {
       setLoading(false);
     }
@@ -94,6 +100,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       });
       setUser(res.data);
     } catch (err) {
+      console.error("Fetch profile failed:", err);
       setUser(null);
       localStorage.removeItem("token");
       setToken(null);
@@ -109,20 +116,16 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   };
 
   useEffect(() => {
-  const initialize = async () => {
-    if (token) {
-      await fetchProfile();
-    } else {
-      setLoading(false); // ✅ stop loading when no token
-    }
-  };
-  initialize();
-}, [token]);
-
+    const initialize = async () => {
+      if (token) await fetchProfile();
+      else setLoading(false);
+    };
+    initialize();
+  }, [token]);
 
   return (
     <AuthContext.Provider
-      value={{ user, loading, register, login, logout, fetchProfile, token }}
+      value={{ user, loading, token, register, login, logout, fetchProfile }}
     >
       {children}
     </AuthContext.Provider>
