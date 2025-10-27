@@ -1,0 +1,10 @@
+{
+  "name": "mini-project2-root",
+  "private": true,
+  "scripts": {
+    "vercel-build": "npm install --prefix server"
+  },
+  "dependencies": {
+    "serverless-http": "^3.0.0"
+  }
+}

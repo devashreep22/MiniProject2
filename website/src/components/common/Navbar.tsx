@@ -1,8 +1,7 @@
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Avatar, AvatarFallback } from "@/components/ui/avatar"
-import { Search, Bell, Menu, X } from "lucide-react"
-import { useNavigate } from 'react-router-dom'
+import { Search, Menu, X } from "lucide-react"
 import { useState, useRef, useEffect } from 'react'
 import { useAuth } from "@/context/AuthContext"
 
@@ -11,7 +10,7 @@ interface NavbarProps {
 }
 
 export function Navbar({ onMenuClick }: NavbarProps) {
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
   const [open, setOpen] = useState(false)
   const popRef = useRef<HTMLDivElement | null>(null)
   const { user, logout } = useAuth()
@@ -61,13 +60,13 @@ export function Navbar({ onMenuClick }: NavbarProps) {
 
       <div className="flex items-center gap-1 lg:gap-2">
         <div className="relative ml-1">
-          <button onClick={() => setOpen((s) => !s)} aria-haspopup="dialog" aria-expanded={open}>
+          <Button onClick={() => setOpen((s) => !s)} aria-haspopup="dialog" aria-expanded={open}>
             <Avatar className="h-8 w-8 lg:ml-2">
               <AvatarFallback className="bg-primary text-sm font-medium text-primary-foreground">
                 {user?.name?.[0]?.toUpperCase() ?? user?.name?.[0]?.toUpperCase() ?? 'U'}
               </AvatarFallback>
             </Avatar>
-          </button>
+          </Button>
 
           {/* Popover card */}
           {open && (
@@ -77,9 +76,9 @@ export function Navbar({ onMenuClick }: NavbarProps) {
             >
               <div className="flex items-start justify-between">
                 <div className="text-sm text-muted-foreground">{user?.email}</div>
-                <button onClick={() => setOpen(false)} className="text-muted-foreground">
+                <Button onClick={() => setOpen(false)} className="text-muted-foreground">
                   <X className="h-4 w-4" />
-                </button>
+                </Button>
               </div>
 
               <div className="flex flex-col items-center py-4">

@@ -1,0 +1,20 @@
+# Render.com manifest for MiniProject2
+# - Web service for the Node backend in `server/`
+# - Static site for the Vite React app in `website/`
+# Adjust branch, region, or env vars in the Render dashboard as needed.
+
+services:
+  - type: web
+    name: mini-project2-server
+    env: node
+    plan: free
+    branch: main
+    buildCommand: "cd server && npm install"
+    startCommand: "cd server && node server.js"
+    autoDeploy: true
+
+
+
+# Notes:
+# - If your website's build output directory differs (e.g., `build` or `dist`), update `publishPath`.
+# - Secrets and production environment variables should be added via the Render dashboard (or use a separate `render.yaml` secrets section).

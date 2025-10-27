@@ -63,5 +63,11 @@ app.use((err, req, res, next) => {
 	require('./src/middleware/errorHandler')(err, req, res, next);
 });
 
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT} [${new Date().toLocaleString()}]`));
+// Export the Express app so it can be reused by serverless wrappers (Vercel, Netlify, etc.)
+module.exports = app;
+
+// If this file is run directly (node server.js), start the HTTP server.
+if (require.main === module) {
+	const PORT = process.env.PORT || 5000;
+	app.listen(PORT, () => console.log(`Server running on port ${PORT} [${new Date().toLocaleString()}]`));
+}

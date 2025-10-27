@@ -125,7 +125,7 @@ export default function Home() {
           <div className="container">
             <div className="grid grid-cols-1 gap-12 md:grid-cols-2 items-center">
               <div>
-                <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Our Story</h2>
+                <h2 id='our-story' className="text-3xl font-bold tracking-tight sm:text-4xl">Our Story</h2>
                 <p className="mt-4 text-lg text-muted-foreground">
                   Our story began when we had the subject entrepreneurial mind and were given a chance to think about a
                   business venture and realized the need for our farmers to have a helping hand pertaining to finding
